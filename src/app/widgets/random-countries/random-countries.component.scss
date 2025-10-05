@@ -1,0 +1,6 @@
+.section-title { margin: 16px 0 8px; color: #2b6777; }
+.cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px,1fr)); gap: 12px; }
+.country-card { padding: 12px 14px; border-radius: 14px; }
+.country-link { display: inline-flex; align-items: center; gap: 8px; color: #2b6777; text-decoration: none; }
+.code { color: #637e89; font-weight: 500; }
+.muted { color: #4b5b61; opacity: .8; margin-top: 8px; }

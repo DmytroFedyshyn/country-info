@@ -1,0 +1,47 @@
+<div class="topbar">
+  <button mat-button (click)="goBack()">
+    <mat-icon>arrow_back</mat-icon>
+    Back
+  </button>
+
+  <span class="spacer"></span>
+
+  <button mat-button (click)="goHome()">
+    <mat-icon>home</mat-icon>
+    Home
+  </button>
+</div>
+
+<h2>{{ title() }}</h2>
+
+<div class="years">
+  <button mat-button *ngFor="let y of years"
+          [color]="y === currentYear() ? 'primary' : undefined"
+          (click)="pickYear(y)">
+    {{ y }}
+  </button>
+</div>
+
+<div *ngIf="loading(); else data">Loading...</div>
+
+<ng-template #data>
+  <div *ngIf="!holidays().length" class="muted">No holidays for {{ currentYear() }}</div>
+  <ul *ngIf="holidays().length">
+    <li *ngFor="let h of holidays()">
+      <strong>{{ h.date }}</strong> — {{ h.localName || h.name }}
+      <span class="badge" *ngIf="h.types?.length">({{ h.types.join(', ') }})</span>
+    </li>
+  </ul>
+</ng-template>
+
+<hr />
+
+<h3>Neighbors</h3>
+<div *ngIf="!neighbors().length" class="muted">No neighbors info</div>
+<ul *ngIf="neighbors().length">
+  <li *ngFor="let n of neighbors()">
+    <a [routerLink]="['/country', n.countryCode]">
+      {{ n.commonName }} ({{ n.countryCode }})
+    </a>
+  </li>
+</ul>

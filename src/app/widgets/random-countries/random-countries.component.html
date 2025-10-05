@@ -1,0 +1,19 @@
+<h3 class="section-title">Random countries & next holiday</h3>
+
+<div class="cards" *ngIf="!loading; else loadingTpl">
+  <mat-card class="country-card" *ngFor="let card of cards">
+    <a [routerLink]="['/country', card.country.countryCode]" class="country-link">
+      <mat-icon aria-hidden="true">public</mat-icon>
+      <span class="name">{{ card.country.name }}</span>
+      <span class="code">({{ card.country.countryCode }})</span>
+    </a>
+    <div class="muted" *ngIf="card.holidayName; else none">
+      Next holiday: <b>{{ card.holidayName }}</b> — {{ card.holidayDate }}
+    </div>
+    <ng-template #none><div class="muted">No upcoming holiday</div></ng-template>
+  </mat-card>
+</div>
+
+<ng-template #loadingTpl>
+  <div class="center"><mat-progress-spinner diameter="36" mode="indeterminate"></mat-progress-spinner></div>
+</ng-template>

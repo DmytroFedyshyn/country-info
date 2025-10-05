@@ -1,1 +1,23 @@
-/* You can add global styles to this file, and also import other style files */
+@use '@angular/material' as mat;
+@use '@angular/material/prebuilt-themes/indigo-pink.css' as *;
+
+@include mat.core();
+
+$brand-primary: #2b6777;
+$brand-accent:  #52ab98;
+$brand-bg:      #f2f2f2;
+$brand-surface: #ffffff;
+$brand-chip:    #c8d8e4;
+
+html, body { height: 100%; background: $brand-bg; }
+body { color: rgba(0,0,0,.87); }
+a { color: $brand-primary; }
+
+.mat-toolbar.mat-primary { background: $brand-primary; color: #fff; }
+
+.mat-mdc-card { background: $brand-surface; border: 1px solid #e9eef1; border-radius: 14px; }
+
+.mat-mdc-standard-chip { background: $brand-chip !important; color: $brand-primary !important; }
+
+.mdc-text-field--filled .mdc-line-ripple::after { border-bottom-color: $brand-accent; }
+.mat-mdc-raised-button.mat-primary { --mdc-protected-button-container-color: #2b6777; }
