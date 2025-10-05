@@ -1,6 +1,6 @@
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { map, Observable } from 'rxjs';
+import { Observable } from 'rxjs';
 import { environment } from '../../environments/environment';
 
 export interface Country {
@@ -29,9 +29,10 @@ export interface CountryInfo {
 
 @Injectable({ providedIn: 'root' })
 export class CountryService {
+  
   private readonly base = environment.apiBase;
 
-  constructor(private http: HttpClient) {}
+  private http = inject(HttpClient);
 
   getAvailableCountries(): Observable<Country[]> {
     return this.http.get<Country[]>(`${this.base}/api/v3/AvailableCountries`);

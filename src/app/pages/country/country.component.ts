@@ -6,6 +6,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { Subscription } from 'rxjs';
 import { MatIconModule } from '@angular/material/icon';
 import { Router } from '@angular/router';
+import { inject } from '@angular/core';
 
 const YEARS = Array.from({ length: 11 }, (_, i) => 2020 + i);
 
@@ -27,7 +28,10 @@ export class CountryComponent implements OnInit, OnDestroy {
 
   private sub?: Subscription;
 
-  constructor(private route: ActivatedRoute, private api: CountryService, private location: Location, private router: Router) {}
+    private route = inject(ActivatedRoute);
+    private api = inject(CountryService);
+    private location = inject(Location);
+    private router = inject(Router);
 
   ngOnInit(): void {
     this.sub = this.route.paramMap.subscribe((p) => {
