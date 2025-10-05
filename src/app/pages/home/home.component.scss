@@ -1,30 +1,47 @@
-/* sticky пошук */
+:host ::ng-deep .compact-field .mat-mdc-form-field-subscript-wrapper {
+  display: none; 
+  height: 0;
+}
+
 .sticky {
   position: sticky;
   top: 12px;
   z-index: 5;
   padding: 12px 16px;
-  border-radius: 14px;
+  margin-bottom: 30px;
   backdrop-filter: saturate(1.2) blur(4px);
 }
 
-/* рівні кути інпуту */
-.search-field .mat-mdc-text-field-wrapper { border-radius: 12px; }
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
 
-/* virtual scroll контейнер */
-.viewport { height: 70vh; width: 100%; }
+.list-card {
+  display: flex;
+  flex-direction: column;
+  flex: 0 0 auto;
+  min-height: 0;
+  padding: 0;
+}
 
-/* рядок країни */
+.viewport {
+  height: 46vh;
+  width: 100%;
+}
+
+.list-header { padding: 8px 12px 0; opacity: .7; font-size: 13px; }
 .row {
   display: flex; align-items: center; gap: 8px;
-  padding: 12px 10px;
-  color: inherit; text-decoration: none;
-  border-bottom: 1px solid #eef2f4;
+  padding: 12px 12px; text-decoration: none; color: inherit;
+  border-bottom: 1px solid #e9eef1;
 }
 .row:hover { background: #f7fafb; }
-
-.name   { font-weight: 600; color: #2b6777; } /* назва з акцентом */
+.name { font-weight: 600; color: #2b6777; }
 .spacer { flex: 1; }
-
-.list-header { margin: 4px 0 8px; opacity: .7; font-size: 13px; padding-left: 4px; }
 .empty { padding: 16px; opacity: .7; }
+
+@media (max-height: 800px) {
+  .viewport { height: 42vh; }
+}

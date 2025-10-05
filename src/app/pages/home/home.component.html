@@ -1,28 +1,27 @@
 <mat-card class="search-card sticky">
-  <mat-form-field appearance="fill" floatLabel="always" class="w-full search-field">
+  <mat-form-field class="compact-field" appearance="fill" floatLabel="always">
     <mat-label>Search countries</mat-label>
     <mat-icon matPrefix>search</mat-icon>
     <input matInput [formControl]="search" placeholder="Type country name..." />
   </mat-form-field>
 </mat-card>
 
-<div class="list-header" *ngIf="filtered.length">{{ filtered.length }} countries</div>
+<div class="content">
+  <mat-card class="list-card">
+    <div class="list-header" *ngIf="filtered.length">{{ filtered.length }} countries</div>
 
-<mat-card>
-  <cdk-virtual-scroll-viewport itemSize="56" class="viewport">
-    <a
-      class="row"
-      *cdkVirtualFor="let c of filtered; trackBy: trackByCode"
-      [routerLink]="['/country', c.countryCode]"
-    >
-      <span class="name">{{ c.name }}</span>
-      <span class="spacer"></span>
-      <mat-chip appearance="outlined" disabled>{{ c.countryCode }}</mat-chip>
-    </a>
-  </cdk-virtual-scroll-viewport>
+    <cdk-virtual-scroll-viewport itemSize="56" class="viewport">
+      <a class="row"
+         *cdkVirtualFor="let c of filtered; trackBy: trackByCode"
+         [routerLink]="['/country', c.countryCode]">
+        <span class="name">{{ c.name }}</span>
+        <span class="spacer"></span>
+        <mat-chip appearance="outlined" disabled>{{ c.countryCode }}</mat-chip>
+      </a>
+    </cdk-virtual-scroll-viewport>
 
-  <div class="empty" *ngIf="!filtered.length">No results</div>
-</mat-card>
+    <div class="empty" *ngIf="!filtered.length">No results</div>
+  </mat-card>
 
 <mat-divider class="my-24"></mat-divider>
 
