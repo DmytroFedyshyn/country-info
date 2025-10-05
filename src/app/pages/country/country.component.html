@@ -29,7 +29,7 @@
   <ul *ngIf="holidays().length">
     <li *ngFor="let h of holidays()">
       <strong>{{ h.date }}</strong> — {{ h.localName || h.name }}
-      <span class="badge" *ngIf="h.types?.length">({{ h.types.join(', ') }})</span>
+      <span class="badge" *ngIf="h.types?.length">({{ (h.types || []).join(', ') }})</span>
     </li>
   </ul>
 </ng-template>
