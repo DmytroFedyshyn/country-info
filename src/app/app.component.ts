@@ -15,9 +15,10 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 styles: [`
   :host { display:block; }
   .app-shell {
-
+    max-width: 1040px;
+    width: calc(100% - 32px);
     height: calc(100vh - 64px);
-    overflow: hidden;
+    overflow: auto;
     max-width: 1040px;
     margin: 0 auto;
     padding: 16px;
